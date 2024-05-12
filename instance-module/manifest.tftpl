@@ -1,0 +1,4 @@
+[Terraform Managed VMs],
+%{ for vmi in range(length(ip_addrs.int)) ~}
+INTERNAL: [${ip_addrs.int[vmi]}] - External: [${ip_addrs.ext[vmi]}],
+%{ endfor ~}

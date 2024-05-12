@@ -75,3 +75,19 @@ module "lb" {
   target_tags  = ["my-target-pool"]
   network      = google_compute_network.vpc_network.name
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# to share a vpc or any other out put between state files, we can use terraform_remote_state data source
+# eg:
+# 
+# data "terraform_remote_state" "vpc" {
+#   backend = "gcs"
+#   config = {
+#     bucket = "mybucket"
+#     prefix = "vpc"
+#   }
+# }
+
+# resource "google_compute_network" "vpc_network" {
+#   name = data.terraform_remote_state.vpc.network_name
+# }
