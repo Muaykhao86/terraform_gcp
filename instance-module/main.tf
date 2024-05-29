@@ -2,6 +2,7 @@ module "vm" {
   source = "../modules/vm"
   count  = length(var.name)
   name   = var.name[count.index]
+  env_tag = "dev"
 }
 # Same as the previous example, but using for_each instead of count:
 # module "vm" {
